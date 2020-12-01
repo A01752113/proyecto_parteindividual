@@ -19,8 +19,8 @@ class SitioWeb{
     private:
 
        string nombre;
-       vector <Producto> inventario;
        float descuento;
+       vector <Producto> inventario;
 
     public:
 
@@ -41,25 +41,25 @@ class SitioWeb{
         // metodos
         void actualizarAgregarInventario(Producto p){
 
-            inventario.push_back(p)
+            inventario.push_back(p);
             cout << "El producto: " << p.getNombre() << " se agrego al inventario\n";
 
         }
 
-        void actualizarEliminarInventario(Producto p){
+        void actualizarEliminarInventario(){
 
-           inventario.erase(inventario.find(p))
-           cout << "El producto: " << p.getNombre() << " se elimino del inventario\n";
+           cout << "El producto se eliminaria del inventario\n";
+           cout << "NOTA: NOS COMENTO QUE LO DEJARAMOS ASI POR EL ITERADOR\n";
 
         }
 
         void verInventario(){
-
+            
+            cout << "\n INVENTARIO\n";
             for(int i = 0; i<inventario.size(); i++){
 
-                cout << "\n INVENTARIO\n";
-                cout << "Producto" << to_string(i+1) << endl;
-                cout << "\n\tNombre" << inventario[i].getNombre() << endl;
+                cout << "Producto: " << to_string(i) << endl;
+                cout << "\tNombre: " << inventario[i].getNombre() << endl;
            }
         }
 

@@ -8,6 +8,7 @@
 
 #include "producto.h"
 #include "envio.h" 
+#include "sitioweb.h"
 
 #include <iostream>
 #include <cmath>
@@ -33,7 +34,7 @@ class Carrito{
       Carrito(){
 
         numeroProductos = 0;
-        formaPago = "nan";
+        formaPago = "tarjeta";
         costoEnvio = 0;
         costoProductos = 0;
         total = 0;
@@ -71,11 +72,13 @@ class Carrito{
 
       }
 
-      void eliminarProducto(Producto p){
+      void eliminarProducto(SitioWeb& s){
+        
+        int n;
+        s.verInventario();
 
-        producto.erase(producto.find(p)); 
-        numeroProductos --;
-        cout << "Se ha eliminado el producto: " << p.getNombre() << " del carrito\n";
+        cout << "El producto se eliminaria del carrito\n";
+        cout << "NOTA: NOS COMENTO QUE LO DEJARAMOS ASI POR EL ITERADOR\n";
 
       }
 
@@ -89,15 +92,16 @@ class Carrito{
           descuento = producto[i].getDescuento() * precio;
 
           tot = tot + precio + descuento;
+          cout << tot << endl;
 
         }
-        costoProductos = total;
+        costoProductos = tot;
 
       }
       
-      void precioEnvio(Envio env){
+      void precioEnvio(Envio& env, Producto p){
 
-        costoEnvio = env.getCostoEnvio();
+        costoEnvio = env.getCostoEnvio(p);
       }
 
       void precioEnvio(){costoEnvio = 0;}
@@ -105,8 +109,11 @@ class Carrito{
       void calcularTotal(){
 
         costoProductosAplicandoDescuentos();
+        precioEnvio();
         total = costoEnvio + costoProductos;
       }
 
 };//clase carrito
+
 #endif
+
