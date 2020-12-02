@@ -77,5 +77,5 @@ cout << "\nSE QUIERE CAMBIAR EL TELEFONO DEL VENDEDORS\n";
     // PRUEBAS DE ENVIO
     cout << "\nPRUEBAS DE LA CLASE ENVIO\n\n";
 
-    cout << "El costo del envio es: " << to_string(e1.getCostoEnvio(p1)) << endl;
+    cout << "El costo del envio es: " << to_string(c1.getCostoEnvio(p1)) << endl;
 }
